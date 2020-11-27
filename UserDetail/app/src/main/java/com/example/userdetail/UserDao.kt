@@ -9,7 +9,7 @@ import java.util.concurrent.Flow
 @Dao
 interface UserDao {
     @Query("SELECT * FROM user_table")
-    fun getAllUsers(): LiveData<List<User>>
+    fun getAllUsers(): List<User>
 
     @Insert
     fun insertUser(user:User)

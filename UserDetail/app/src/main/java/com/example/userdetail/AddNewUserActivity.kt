@@ -49,8 +49,10 @@ class AddNewUserActivity : AppCompatActivity() {
                 val username = usernameTextView.text.toString()
                 val email = emailTextView.text.toString()
                 val dob = DOBTextView.text.toString()
-                val userDetailArr = arrayListOf<String>(username,email,dob)
-                replyIntent.putExtra(EXTRA_REPLY, userDetailArr)
+                /*val userDetailArr = arrayListOf<String>(username,email,dob)*/
+                val userDetailArr = arrayOf<String>(username,email,dob)
+                Log.d("tag","something "+userDetailArr.get(1))
+                replyIntent.putExtra(EXTRA_REPLY,userDetailArr)
                 setResult(Activity.RESULT_OK, replyIntent)
             }
             finish()

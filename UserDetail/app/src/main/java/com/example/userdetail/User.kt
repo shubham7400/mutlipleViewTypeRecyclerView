@@ -1,17 +1,27 @@
 package com.example.userdetail
 
+import android.graphics.Bitmap
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "user_table")
-class User (
+data class User (
+   /* @PrimaryKey(autoGenerate = true)
+    val id:Int,*/
+   val profilePhoto: Bitmap,
+
+
+
+
+    var username:String,
+   /* @ColumnInfo(name = "email")*/
+    var email:String,
+   /* @ColumnInfo(name = "date")*/
+    var date :String
+
+
+){
     @PrimaryKey(autoGenerate = true)
-    val id:Int,
-    @ColumnInfo(name = "username")
-    val username:String,
-    @ColumnInfo(name = "username")
-    val email:String,
-    @ColumnInfo(name = "username")
-    val date :String
-)
+    var id:Int = 0
+}
