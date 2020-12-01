@@ -13,6 +13,7 @@ import android.provider.MediaStore
 import android.text.TextUtils
 import android.util.Log
 import android.widget.*
+import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import java.io.ByteArrayOutputStream
@@ -37,6 +38,15 @@ class AddUserDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_user_detail)
+
+        setSupportActionBar(findViewById(R.id.toolbar_new_user_detail))
+        supportActionBar!!.title = "Add Device Detail"
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        findViewById<Toolbar>(R.id.toolbar_new_user_detail).setNavigationOnClickListener{
+            val intent = Intent(this, UserDetailActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         deviceDateTextView = findViewById(R.id.deviceAddDateTextViewId)
         deviceNameTextView = findViewById(R.id.deviceNameEditTextId)

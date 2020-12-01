@@ -6,97 +6,118 @@
     android:layout_height="match_parent"
     tools:context=".AddUserDetailActivity">
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_new_user_detail"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
 
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="26dp"
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_new_user_detail">
+
+
         <ImageView
             android:id="@+id/deviceImageViewId"
             android:layout_width="match_parent"
-            android:layout_marginLeft="120dp"
-            android:layout_marginRight="120dp"
-            android:layout_marginTop="20dp"
             android:layout_height="100dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginRight="120dp"
             android:src="#dedede" />
 
         <Button
             android:id="@+id/btCaptureDevicePhotoId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
-            android:textColor="@android:color/white"
-            android:text="Capture device Photo" />
+            android:text="Capture device Photo"
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/btOpenGalleryDeviceId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="30dp"
-            android:textColor="@android:color/white"
-            android:text="Open Gallery " />
+            android:text="Open Gallery "
+            android:textColor="@android:color/white" />
 
         <EditText
             android:id="@+id/deviceNameEditTextId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
             android:hint="device name"
-            android:paddingLeft="10dp"/>
+            android:paddingLeft="10dp" />
 
         <EditText
             android:id="@+id/deviceModelEditTextId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
             android:hint="model name"
-            android:paddingLeft="10dp"/>
+            android:paddingLeft="10dp" />
 
         <Button
             android:id="@+id/pickDeviceDateBtnId"
-            android:text="Pick Date"
-            android:layout_marginLeft="140dp"
-            android:layout_marginRight="140dp"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="140dp"
+            android:text="Pick Date" />
 
         <TextView
             android:id="@+id/deviceAddDateTextViewId"
-            android:text="Date"
-            android:textSize="30sp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            android:textAlignment="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal" />
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
+            android:gravity="center_horizontal"
+            android:paddingLeft="10dp"
+            android:text="Date"
+            android:textAlignment="center"
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/saveDetailButtonId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
             android:layout_marginLeft="140dp"
-            android:layout_marginRight="140dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="140dp"
+            android:gravity="center_horizontal"
             android:text="save"
-            android:gravity="center_horizontal" />
+            android:textAlignment="center" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

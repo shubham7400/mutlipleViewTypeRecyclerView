@@ -20,6 +20,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 
 import androidx.activity.viewModels
+import androidx.appcompat.widget.Toolbar
 
 import androidx.lifecycle.LiveData
 
@@ -52,6 +53,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+
+        setSupportActionBar(findViewById(R.id.toolbar_main))
+        supportActionBar!!.title = "Users"
+        /*supportActionBar!!.setDisplayHomeAsUpEnabled(true)*/
+
 
         recyclerView = findViewById(R.id.recyclerViewId)
         recyclerView.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)

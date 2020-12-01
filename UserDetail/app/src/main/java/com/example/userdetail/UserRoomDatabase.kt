@@ -7,6 +7,7 @@ import androidx.room.Database
 import androidx.room.Room
 
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
 
 import androidx.sqlite.db.SupportSQLiteDatabase
 
@@ -31,6 +32,8 @@ public abstract class UserRoomDatabase: RoomDatabase() {
 
         fun getInstance(context: Context):UserRoomDatabase{
 
+
+
             return INSTANCE ?: synchronized(this) {
 
                 val instance = Room.databaseBuilder(context.applicationContext, UserRoomDatabase::class.java, "word_database").allowMainThreadQueries().build()
@@ -46,5 +49,10 @@ public abstract class UserRoomDatabase: RoomDatabase() {
         }
 
     }
+
+
+
+   /* Room.databaseBuilder(applicationContext, MyDb::class.java, "database-name")
+    .addMigrations(MIGRATION_1_2, MIGRATION_2_3).build()*/
 
 }

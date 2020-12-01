@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -22,6 +23,15 @@ class UserDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_detail)
+
+        setSupportActionBar(findViewById(R.id.toolbar_device_list))
+        supportActionBar!!.title = "Devices"
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        findViewById<Toolbar>(R.id.toolbar_device_list).setNavigationOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         username = intent.getStringExtra("username").toString()
         usernameTextView = findViewById(R.id.username)

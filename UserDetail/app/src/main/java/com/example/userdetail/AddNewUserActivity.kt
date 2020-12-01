@@ -15,6 +15,7 @@ import android.widget.DatePicker
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import java.io.ByteArrayOutputStream
@@ -59,6 +60,15 @@ class AddNewUserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_add_new_user)
+
+        setSupportActionBar(findViewById(R.id.toolbar_new_user))
+        supportActionBar!!.title = "Add New User"
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        findViewById<Toolbar>(R.id.toolbar_new_user).setNavigationOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
 
 
