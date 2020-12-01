@@ -1,37 +1,23 @@
 package com.example.userdetail
 
-
-import android.graphics.Bitmap
-
 import androidx.room.ColumnInfo
-
-
 import androidx.room.Entity
-
 import androidx.room.PrimaryKey
 
-
-@Entity(tableName = "user_table")
-
-data class User (
+@Entity(tableName = "device_table")
+data class Device (
     /* @PrimaryKey(autoGenerate = true)
      val id:Int,*/
     /*val profilePhoto: Bitmap,*/
-    @PrimaryKey
-    var username:String,
+    var username: String,
+    var deviceName:String,
     /* @ColumnInfo(name = "email")*/
-    var email:String,
+    var deviceModel:String,
     /* @ColumnInfo(name = "date")*/
-    var date :String,
-
+    var deviceDate :String,
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
-    /*private byte[] image; */
-    var image: ByteArray
-   /* var profilePhoto: Bitmap*/
-)/*{
-
+    var deviceImage: ByteArray
+){
     @PrimaryKey(autoGenerate = true)
-
     var id:Int = 0
-
-}*/
+}

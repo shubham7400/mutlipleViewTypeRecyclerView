@@ -1,195 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
     xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_width="match_parent"
-
-    android:layout_height="match_parent">
-
-
+    android:layout_height="match_parent"
+    tools:context=".AddUserDetailActivity">
 
     <LinearLayout
-
-        android:layout_width="409dp"
-
-        android:layout_height="729dp"
-
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-
         app:layout_constraintBottom_toBottomOf="parent"
-
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toTopOf="parent">
 
 
-
         <ImageView
-
-            android:id="@+id/ivImageId"
-
+            android:id="@+id/deviceImageViewId"
             android:layout_width="match_parent"
-
             android:layout_marginLeft="120dp"
-
             android:layout_marginRight="120dp"
-
-            android:layout_marginTop="100dp"
-
+            android:layout_marginTop="20dp"
             android:layout_height="100dp"
-
-            android:src="#dedede"
-
-            />
+            android:src="#dedede" />
 
         <Button
-
-            android:id="@+id/btCapturePhotoId"
-
+            android:id="@+id/btCaptureDevicePhotoId"
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content"
-
             android:layout_marginTop="20dp"
-
             android:layout_marginLeft="30dp"
-
             android:layout_marginRight="30dp"
-
             android:textColor="@android:color/white"
-
-            android:text="Capture Photo"
-
-            />
+            android:text="Capture device Photo" />
 
         <Button
-
-            android:id="@+id/btOpenGallery"
-
+            android:id="@+id/btOpenGalleryDeviceId"
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content"
-
             android:layout_marginTop="10dp"
-
             android:layout_marginLeft="30dp"
-
             android:layout_marginRight="30dp"
-
             android:textColor="@android:color/white"
-
-            android:text="Open Gallery"
-
-            />
+            android:text="Open Gallery " />
 
         <EditText
-
-            android:id="@+id/usernameTextViewId"
-
+            android:id="@+id/deviceNameEditTextId"
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content"
-
             android:layout_marginLeft="30dp"
-
             android:layout_marginRight="30dp"
-
             android:layout_marginTop="20dp"
-
-            android:hint="username"
-
+            android:hint="device name"
             android:paddingLeft="10dp"/>
 
         <EditText
-
-            android:id="@+id/emailTextViewId"
-
+            android:id="@+id/deviceModelEditTextId"
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content"
-
             android:layout_marginLeft="30dp"
-
             android:layout_marginRight="30dp"
-
             android:layout_marginTop="10dp"
-
-            android:hint="email"
-
+            android:hint="model name"
             android:paddingLeft="10dp"/>
 
         <Button
-
-            android:id="@+id/pickDateBtnId"
-
+            android:id="@+id/pickDeviceDateBtnId"
             android:text="Pick Date"
-
-            android:layout_marginLeft="150dp"
-
-            android:layout_marginRight="150dp"
-
+            android:layout_marginLeft="140dp"
+            android:layout_marginRight="140dp"
             android:layout_marginTop="10dp"
-
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content" />
 
         <TextView
-
-            android:id="@+id/dateOfBirthId"
-
+            android:id="@+id/deviceAddDateTextViewId"
             android:text="Date"
-
             android:textSize="30sp"
-
             android:layout_marginLeft="30dp"
-
             android:layout_marginRight="30dp"
-
             android:layout_marginTop="10dp"
-
             android:paddingLeft="10dp"
-
             android:textAlignment="center"
-
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content"
-
             android:gravity="center_horizontal" />
-
-
 
         <Button
-
-            android:id="@+id/saveButtonId"
-
+            android:id="@+id/saveDetailButtonId"
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content"
-
             android:textAlignment="center"
-
-            android:layout_marginLeft="150dp"
-
-            android:layout_marginRight="150dp"
-
+            android:layout_marginLeft="140dp"
+            android:layout_marginRight="140dp"
             android:layout_marginTop="20dp"
-
             android:text="save"
-
             android:gravity="center_horizontal" />
 
-
-
-
-
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
