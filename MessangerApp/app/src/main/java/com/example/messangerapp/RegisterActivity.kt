@@ -17,7 +17,6 @@ class RegisterActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     lateinit var mAuth: FirebaseAuth
     lateinit var refUsers: DatabaseReference
-
     private var firebaseUserId:String = ""
 
     lateinit var username_register: EditText
@@ -67,8 +66,9 @@ class RegisterActivity : AppCompatActivity() {
                     refUsers = FirebaseDatabase.getInstance().reference.child("Users").child(firebaseUserId)
                     val userHashMap = HashMap<String,Any>()
                     userHashMap["uid"] = firebaseUserId
-                    userHashMap["profile"] = "https://firebasestorage.googleapis.com/v0/b/messangerapp-2bbac.appspot.com/o/ic_profile.png?alt=media&token=8e701796-4fad-4046-a194-5f3f46922f19"
-                    userHashMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/messangerapp-2bbac.appspot.com/o/cover.jpg?alt=media&token=2a636b4b-574b-4535-812f-96304165d9d5"
+                    userHashMap["username"] = username.toLowerCase()
+                    userHashMap["profile"] = "https://firebasestorage.googleapis.com/v0/b/messangerapp-2bbac.appspot.com/o/profile.png?alt=media&token=6fb05330-12f5-4253-8f03-1f20b3f30c0d"
+                    userHashMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/messangerapp-2bbac.appspot.com/o/cover.png?alt=media&token=b56c3f75-f8b7-4866-92b4-e0617c2ad127"
                     userHashMap["status"] = "offline"
                     userHashMap["search"] = username.toLowerCase()
                     userHashMap["facebook"] = "https://m.facebook.com"
@@ -76,7 +76,13 @@ class RegisterActivity : AppCompatActivity() {
                     userHashMap["website"] = "https://www.google.com"
 
                     refUsers.updateChildren(userHashMap).addOnCompleteListener{task ->
-
+                        if(task.isSuccessful)
+                        {
+                            val intent = Intent(this,MainActivity::class.java)
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                            startActivity(intent)
+                            finish()
+                        }
                     }
 
                 }else{
