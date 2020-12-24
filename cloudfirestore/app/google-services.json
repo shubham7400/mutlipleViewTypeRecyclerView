@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "157930492632",
+    "project_id": "jsa-cloud-firestore-c1e62",
+    "storage_bucket": "jsa-cloud-firestore-c1e62.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:157930492632:android:c4e19dc720db7c2f1c3dad",
+        "android_client_info": {
+          "package_name": "com.example.cloudfirestore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "157930492632-jpj1jvfe8en1fpcrleqp4mk0qualblen.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKWuDRkBqTJ9Tc6JHRC-unzwSVBDB_xpc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "157930492632-jpj1jvfe8en1fpcrleqp4mk0qualblen.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
