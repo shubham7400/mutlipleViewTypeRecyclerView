@@ -11,15 +11,12 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cloudfirestore.adapter.NoteRecyclerViewAdapter
 import com.example.cloudfirestore.databinding.ActivityMainBinding
-import com.example.cloudfirestore.databinding.ActivityNoteBinding
 import com.example.cloudfirestore.model.Note
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
-import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,7 +27,6 @@ class MainActivity : AppCompatActivity() {
     private var mAdapter: NoteRecyclerViewAdapter? = null
 
     private var firestoreDB: FirebaseFirestore? = null
-    private var firestoreListener: ListenerRegistration? = null
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {

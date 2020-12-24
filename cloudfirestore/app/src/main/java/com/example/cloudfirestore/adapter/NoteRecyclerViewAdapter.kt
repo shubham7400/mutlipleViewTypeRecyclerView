@@ -7,12 +7,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cloudfirestore.MainActivity
-import com.example.cloudfirestore.NoteActivity
 import com.example.cloudfirestore.R
 import com.example.cloudfirestore.model.Note
 import com.google.firebase.auth.FirebaseAuth
@@ -20,8 +21,12 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
-class NoteRecyclerViewAdapter(private val notesList: MutableList<Note>, private val context: Context, private val firestoreDB: FirebaseFirestore) : RecyclerView.Adapter<NoteRecyclerViewAdapter.ViewHolder>() {
-    private lateinit var auth: FirebaseAuth
+class NoteRecyclerViewAdapter(
+    private val notesList: MutableList<Note>,
+    private val context: Context,
+    private val firestoreDB: FirebaseFirestore
+) : RecyclerView.Adapter<NoteRecyclerViewAdapter.ViewHolder>() {
+    lateinit var auth: FirebaseAuth
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent!!.context).inflate(R.layout.item_note, parent, false)
@@ -42,7 +47,7 @@ class NoteRecyclerViewAdapter(private val notesList: MutableList<Note>, private 
 }
 
     override fun getItemCount(): Int {
-        Log.i(TAG, "getItemCount:  size is "+notesList.size)
+        Log.i(TAG, "getItemCount:  size is " + notesList.size)
         return notesList.size
     }
 
@@ -64,7 +69,7 @@ class NoteRecyclerViewAdapter(private val notesList: MutableList<Note>, private 
     private fun updateNote(note: Note) {
         auth = Firebase.auth
 
-        var view = LayoutInflater.from(context).inflate(R.layout.alert_dialog,null)
+        var view = LayoutInflater.from(context).inflate(R.layout.alert_dialog, null)
         val etTitel = view.findViewById<EditText>(R.id.title)
         val etContent = view.findViewById<EditText>(R.id.content)
         etTitel.setText(note.title)
@@ -76,29 +81,34 @@ class NoteRecyclerViewAdapter(private val notesList: MutableList<Note>, private 
             // if the dialog is cancelable
             .setCancelable(false)
             // positive button text and action
-            .setPositiveButton("Edit", DialogInterface.OnClickListener {
-                    dialog, position ->
+            .setPositiveButton("Edit", DialogInterface.OnClickListener { dialog, position ->
 
-                Toast.makeText(context,"Accept button got clicked",Toast.LENGTH_LONG).show()
-                Log.d("tag","shubham mogarkar")
+                Toast.makeText(context, "Accept button got clicked", Toast.LENGTH_LONG).show()
+                Log.d("tag", "shubham mogarkar")
 
-                val note = Note(id!!, auth.currentUser!!.uid, etTitel.text.toString(), etContent.text.toString()).toUpdateMap()
+                val note = Note(
+                    id!!,
+                    auth.currentUser!!.uid,
+                    etTitel.text.toString(),
+                    etContent.text.toString()
+                ).toUpdateMap()
 
                 firestoreDB!!.collection("notes").document(id).set(note).addOnSuccessListener {
-                        Log.e(Companion.TAG, "Note document update successful!")
-                        Toast.makeText(context, "Note has been updated!", Toast.LENGTH_SHORT).show()
-                    }
+                    Log.e(Companion.TAG, "Note document update successful!")
+                    Toast.makeText(context, "Note has been updated!", Toast.LENGTH_SHORT).show()
+                }
                     .addOnFailureListener { e ->
                         Log.e(Companion.TAG, "Error adding Note document", e)
-                        Toast.makeText(context, "Note could not be updated!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Note could not be updated!", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 dialog.dismiss()
                 val intent = Intent(context, MainActivity::class.java)
                 context.startActivity(intent)
             })
             // negative button text and action
-            .setNegativeButton("Cancel", DialogInterface.OnClickListener {
-                    dialog, id -> dialog.cancel()
+            .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                dialog.cancel()
             })
 
         // create dialog box
@@ -113,25 +123,22 @@ class NoteRecyclerViewAdapter(private val notesList: MutableList<Note>, private 
         val alertDialog = AlertDialog.Builder(context)
         alertDialog.setMessage("Do you really want to delete this note?")
             .setCancelable(false)
-            .setPositiveButton("Confirm", DialogInterface.OnClickListener {
-                    dialog, position ->
+            .setPositiveButton("Confirm", DialogInterface.OnClickListener { dialog, dontKnow ->
 
                 firestoreDB.collection("notes")
                     .document(id)
                     .delete()
                     .addOnCompleteListener {
-                        notesList.removeAt(position+1)
-                        notifyItemRemoved(position+1)
-                        notifyItemRangeChanged(position+1, notesList.size)
+                        notesList.removeAt(position )
+                        notifyItemRemoved(position)
+                        notifyItemRangeChanged(position, notesList.size)
                         Toast.makeText(context, "Note has been deleted!", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(context, MainActivity::class.java)
-                        context.startActivity(intent)
                     }
 
                 dialog.dismiss()
             })
-            .setNegativeButton("Cancel", DialogInterface.OnClickListener {
-                    dialog, id -> dialog.cancel()
+            .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                dialog.cancel()
             })
         // create dialog box
         val alert = alertDialog.create()

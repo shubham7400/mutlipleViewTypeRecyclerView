@@ -95,7 +95,12 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
 
             galleryLinearLayout -> {
                 Toast.makeText(this, "camera button got clicked", Toast.LENGTH_LONG).show()
-                task.execute(null,null,null)
+                Intent(Intent.ACTION_GET_CONTENT).also { intent ->
+                    intent.type = "image/*"
+                    intent.resolveActivity(packageManager)?.also {
+                        startActivityForResult(intent, 2)
+                    }
+                }
                 bottomSheetDialog.dismiss()
             }
 
@@ -176,8 +181,8 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
                         firestoreDB?.collection("Profile")?.document(auth.currentUser!!.uid)?.update(imageHashMap)
                                 ?.addOnSuccessListener {
                                     Toast.makeText(this, imageChecker +" image has been changed", Toast.LENGTH_LONG).show()
-                                    val intent = Intent(this,MainActivity::class.java)
-                                    startActivity(intent)
+                                    val updataTask = UpdataTask()
+                                    updataTask.execute( null,null,null)
                                 }
                             ?.addOnFailureListener { e ->
                                 Log.i(TAG, "uploadImageIntoDatabase: error occured while changing "+imageChecker+" image")
@@ -193,16 +198,12 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
     private fun updateTask() {
         Log.i(TAG, "updateTask: " + Thread.currentThread().name)
         val updataTask = UpdataTask()
-        updataTask.execute("doInBackground: method is running")//this string will go in parameter of doInBackground method
+        updataTask.execute( null,null,null)//this string will go in parameter of doInBackground method
     }
 
-    inner class UpdataTask: AsyncTask<String, Int, String>() {
-        override fun onPreExecute() {
-            Log.i(TAG, "onPreExecute: onPreExecute " + Thread.currentThread().name)
-            binding.progressbarIndicater.visibility = View.VISIBLE
+    inner class UpdataTask: AsyncTask<Void?, Void?, Void?>() {
 
-        }
-        override fun doInBackground(vararg params: String?): String? {
+        override fun doInBackground(vararg params: Void?): Void? {
             Log.i(TAG, "doInBackground: " + Thread.currentThread().name + " " + params[0])
             Log.i(TAG, "setProfile: got called")
             firestoreDB!!.collection("Profile").get()
@@ -230,35 +231,9 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
                     }
 
             Log.i(TAG, "doInBackground: check " + binding.usernameProfile)
-            return ""
-        }
-
-
-        override fun onPostExecute(result: String?) {
-            Log.i(TAG, "onPreExecute: onPostExecute " + Thread.currentThread().name)
-            binding.progressbarIndicater.visibility = View.GONE
-        }
-
-
-    }
-
-    var task: AsyncTask<Void?, Void?, Void?> = object : AsyncTask<Void?, Void?, Void?>() {
-
-
-
-
-
-        override fun doInBackground(vararg params: Void?): Void? {
-            Intent(Intent.ACTION_GET_CONTENT).also { intent ->
-                intent.type = "image/*"
-                intent.resolveActivity(packageManager)?.also {
-                    startActivityForResult(intent, 2)
-                }
-            }
             return null
         }
     }
-
 
     companion object {
         private const val TAG = "ProfileActivity"
