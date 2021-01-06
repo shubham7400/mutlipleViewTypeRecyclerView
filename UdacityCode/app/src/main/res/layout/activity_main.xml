@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<data>
+    <variable
+        name="myName"
+        type="com.example.udacitycode.MyName" />
+</data>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+
+        android:text= "@={myName.name}"
+        style="@style/nameStyle"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/image_star"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_margin"
+        android:contentDescription="@string/star_description"
+        app:srcCompat="@android:drawable/star_big_on" />
+
+    <ScrollView
+        android:id="@+id/scroll_bio"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/nameStyle"
+                android:hint="enter nickname"
+                android:id="@+id/nickname_editText"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@={myName.nickname}"
+                android:id="@+id/nickname_textView"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"
+                android:text="go"/>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textSize="20dp"
+            android:lineSpacingMultiplier="2.5"
+            android:text="@string/bio" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+
+</layout>

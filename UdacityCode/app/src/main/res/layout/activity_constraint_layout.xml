@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ConstraintLayoutActivity">
+
+        <TextView
+            android:id="@+id/one_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@color/one_tv_bc_color"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/one_tv_text" />
+
+        <TextView
+            android:id="@+id/tow_tv"
+            android:layout_width="141dp"
+            android:layout_height="167dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:background="#448F98"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="tow text box"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/one_tv" />
+
+        <TextView
+            android:id="@+id/tree_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:background="#71AFB6"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="tree text box"
+            app:layout_constraintBottom_toTopOf="@+id/four_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tow_tv"
+            app:layout_constraintTop_toTopOf="@+id/tow_tv"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
+
+        <TextView
+            android:id="@+id/four_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:background="#58A9B3"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="four text box"
+            app:layout_constraintBottom_toTopOf="@+id/five_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tow_tv"
+            app:layout_constraintTop_toBottomOf="@+id/tree_tv" />
+
+        <TextView
+            android:id="@+id/five_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:background="#51979F"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="five text box"
+            app:layout_constraintBottom_toBottomOf="@+id/tow_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tow_tv"
+            app:layout_constraintTop_toBottomOf="@+id/four_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
